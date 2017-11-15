@@ -1,0 +1,11 @@
+---
+
+- name: Installation du paquet pour etre sudo
+  package:
+    name: sudo
+    state: latest
+  become_method: su
+  become: true
+
+
+

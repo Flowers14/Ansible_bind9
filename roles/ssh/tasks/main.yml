@@ -1,0 +1,42 @@
+---
+
+- name: Ajout de la cle SSH
+  when: deploy_user is defined
+  authorized_key:
+    user: "{{ deploy_user }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  become_method: su
+  become: true
+
+
+
+- name: "{{ deploy_user }} devient sudo"
+  when: deploy_user is defined
+  template:
+    src: "{{ sudoers_sources }}"
+    dest: "{{ sudoers }}/{{ deploy_user }}-sudoer"
+  become_method: su
+  become: true
+
+
+
+- name: Empeche acces ssh via root
+  lineinfile:
+    dest: "{{ sshd }}"
+    regexp: "{{ regex_permrootlog }}"
+    line: "{{ permit_no }}"
+    state: present
+
+  become: true
+
+
+- name: Relancer SSH
+  shell: sleep 3; /etc/init.d/sshd restart
+  async: 1
+  poll: 0
+  become: true
+
+
+
+
+

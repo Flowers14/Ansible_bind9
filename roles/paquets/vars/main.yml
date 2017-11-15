@@ -1,0 +1,11 @@
+--- 
+
+
+apt_deb:
+  - dnsutils
+  - iptables-persistent
+  - vim
+  - bind9  
+
+
+

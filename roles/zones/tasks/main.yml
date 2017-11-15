@@ -1,0 +1,38 @@
+---
+
+- name: Check des logs
+  shell: |
+    sleep 5; cat {{ file_log }}
+  become: true
+  register: end
+
+- stat:
+    path: "{{ file_log }}"
+  register: log
+- name: Etat du transfert de zone
+  when: "'secondaire_host' in group_names and log.stat.exists == True and end.stdout.find('Transfer completed:') >=1"
+  debug:
+    msg: "Transfert ok"
+
+
+- stat:
+    path: "{{ dom_lan }}"
+  register: lan
+  become: true
+- name: Verifie si le fichier est bien present sur secondaire
+  when: "'secondaire_host' in group_names and lan.stat.exists == True"
+  debug:
+    msg: "Tout est ok"
+
+
+
+
+- stat:
+    path: "{{ dom_lan_inv }}"
+  register: lan_inv
+  become: true
+- name: Verifie si le fichier inv est bien present sur secondaire
+  when: "'secondaire_host' in group_names and lan_inv.stat.exists == True"
+  debug:
+    msg: "Tout est ok en inv"
+

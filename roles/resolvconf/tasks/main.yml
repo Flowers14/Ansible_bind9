@@ -1,0 +1,8 @@
+---
+- name: Verification DNS
+  debug:
+    msg: "{{ lookup('dig', 'google.com') }}"
+
+- name: Verification DNS inverse
+  debug:
+    msg: "{{ lookup('dig', '8.8.8.8/PTR') }}"

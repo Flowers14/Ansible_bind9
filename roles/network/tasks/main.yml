@@ -1,0 +1,7 @@
+---
+
+- name: Test la connection a internet
+  shell: |
+   ping -c 6 8.8.8.8
+  register: ping
+- debug: var=ping 

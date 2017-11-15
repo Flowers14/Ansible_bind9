@@ -1,0 +1,9 @@
+[bind:children]
+primaire_host
+secondaire_host
+
+[primaire_host]
+primaire ansible_host=172.180.0.41
+
+[secondaire_host]
+secondaire ansible_host=172.180.0.42

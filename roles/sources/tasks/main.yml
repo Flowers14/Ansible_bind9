@@ -1,0 +1,37 @@
+---
+
+- stat:
+    path: "{{ sources_debian }}"
+  register: srclist
+- name: Copie le fichier original sources list
+  command: mv {{ sources_debian }} {{ sources_old }}
+  become_method: su
+  become: true
+  when: srclist.stat.exists == True
+
+- stat:
+    path: "{{ sources_debian }}"
+  register: srclist
+- name: Pousse la conifguration du bon fichier sourceslist
+  template:
+    src: "{{ sources }}"
+    dest: "{{ sources_debian }}"
+    force: yes
+  become_method: su
+  become: true
+  when: srclist.stat.exists == False
+
+
+
+- name: Fait la mise a jours des repositories aptitude
+  command: apt-get update
+  become_method: su
+  become: true
+       
+  
+
+
+
+
+
+

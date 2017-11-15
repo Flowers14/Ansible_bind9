@@ -1,0 +1,26 @@
+---
+
+- stat:
+    path: "{{ mondom }}"
+  register: deb
+  become: true
+- name: Pousse le fichier db_mondomaine.lan
+  template:
+     src: "{{ src_mondom }}"
+     dest: "{{ mondom }}"
+     force: yes
+  become: true
+  when: "deb.stat.exists == False"
+
+- stat:
+    path: "{{ mondom_inv }}"
+  register: deb_inv
+  become: true
+- name: Pousse du fichier db_mondomaine.lan.inv
+  template:
+     src: "{{ src_mondom_inv }}"
+     dest: "{{ mondom_inv }}"
+     force: yes
+  become: true
+  when: "deb_inv.stat.exists == False"
+

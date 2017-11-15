@@ -1,0 +1,9 @@
+---
+
+- name: Configuration du serveur primaire
+  hosts: primaire_host
+  remote_user: paris
+  
+
+  roles: 
+    - dns_primaire

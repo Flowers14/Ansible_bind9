@@ -1,0 +1,11 @@
+---
+
+
+- name: Configuration du serveur secondaire bind
+  hosts: secondaire_host
+  remote_user: paris
+
+
+  roles:
+    - dns_secondaire
+

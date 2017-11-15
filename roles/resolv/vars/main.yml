@@ -1,0 +1,12 @@
+---
+
+
+resolv: resolv.conf.j2
+new_resolv: /etc/resolv.conf
+old_resolv: /etc/resolv.conf.old
+network: /etc/init.d/network
+ajout_dns: |
+  DNS1="127.0.0.1"
+  DNS2="172.180.0.41"
+  DNS3="172.180.0.42"
+  DOMAIN="mondomaine.lan"  

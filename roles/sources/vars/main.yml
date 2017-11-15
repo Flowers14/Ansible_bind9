@@ -1,0 +1,5 @@
+---
+sources: sl.j2
+sources_debian: /etc/apt/sources.list
+sources_old: /etc/apt/sources.list.old
+

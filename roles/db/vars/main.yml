@@ -1,0 +1,7 @@
+---
+
+
+mondom: /etc/bind/db.mondomaine.lan
+mondom_inv: /etc/bind/db.mondomaine.lan.inv
+src_mondom: db.mondomaine.lan.j2
+src_mondom_inv: db.mondomaine.lan.inv.j2

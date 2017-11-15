@@ -1,0 +1,25 @@
+---
+
+- stat:
+    path: "{{ new_resolv }}"
+  register: conf_resolv
+  become: true
+
+- name: Prend le fichier initial et le renomme en old
+  command: mv {{ new_resolv }} {{ old_resolv }}
+  become: true
+  when: conf_resolv.stat.exists == True
+
+- stat:
+    path: "{{ new_resolv }}"
+  register: conf_resolv
+  become: true
+
+
+- name: Pousse le fichier resolv sur tous les hosts
+  template:
+    src: "{{ resolv }}"
+    dest: "{{ new_resolv }}"
+    force: yes
+  become: true
+  when: conf_resolv.stat.exists == False 

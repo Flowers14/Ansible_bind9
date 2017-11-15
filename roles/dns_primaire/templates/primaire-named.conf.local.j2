@@ -1,0 +1,13 @@
+zone "mondomaine.lan" {
+        type master;
+        notify yes;
+        allow-transfer {172.180.0.42;};
+        file "/etc/bind/db.mondomaine.lan";
+};
+
+zone "0.180.172.in-addr.arpa" {
+        type master;
+        notify yes;
+        allow-transfer {172.180.0.42;};
+        file "/etc/bind/db.mondomaine.lan.inv";
+};

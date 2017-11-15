@@ -1,0 +1,6 @@
+---
+
+
+file_log: /var/log/syslog
+dom_lan: /etc/bind/db.mondomaine.lan
+dom_lan_inv: /etc/bind/db.mondomaine.lan.inv

@@ -1,0 +1,12 @@
+$TTL    604800
+@       IN      SOA     mondomaine.lan. root.mondomaine.lan. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.mondomaine.lan.
+@       IN      NS      ns2.mondomaine.lan.
+ns1     IN      A       172.180.0.41
+ns2     IN      A       172.180.0.42

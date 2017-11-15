@@ -1,0 +1,11 @@
+---
+
+- name: Verifie la configuration
+  hosts: bind
+  remote_user: paris
+
+
+
+  roles:
+    - zones
+    - resolvconf

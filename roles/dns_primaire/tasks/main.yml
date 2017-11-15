@@ -1,0 +1,33 @@
+---
+- stat:
+    path: "{{ named }}"
+  become: true
+  register: conf_local
+- name: Copie le fichier named vers le primaire 
+  template:
+    src: "{{ sources_named }}"
+    dest: "{{ named }}"
+    force: yes
+  become: true
+  when: conf_local.stat.exists == True
+
+
+
+- name: "{{ buser }} creation du compte pour bind"
+  file:
+    path: "{{ bdirectory }}"
+    recurse: yes
+    mode: "{{ umask }}"
+    owner: "{{ buser }}"
+    group: "{{ bgroup }}"
+  become: true
+
+
+
+
+
+- name: relancer le service bind
+  shell: sleep 5; systemctl restart bind9
+  async: 1
+  poll: 0
+  become: true 

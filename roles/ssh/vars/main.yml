@@ -1,0 +1,13 @@
+---
+
+deploy_user: paris
+sudoers: /etc/sudoers.d
+sshd: /etc/ssh/sshd_config
+sudo: visudo -cf %s
+sudoers_sources: sudoers_sources.j2
+regex_permrootlog: ^PermitRootLogin
+permit_no: PermitRootLogin no
+paris_nopasswd: 'paris ALL=(ALL) NOPASSWD: ALL'
+
+
+

@@ -1,0 +1,9 @@
+---
+
+named: /etc/bind/named.conf.local
+
+sources_named: primaire-named.conf.local.j2
+buser: bind
+bgroup: bind
+bdirectory: /etc/bind
+umask: 0750
